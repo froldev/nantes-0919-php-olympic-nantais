@@ -38,7 +38,7 @@ class CategoriesController extends AbstractController
         ]);
     }
 
-    public function delete(int $id)
+    public function delete(int $id): string
     {
         $categoriesManager = new CategoriesManager();
         $categoriesManager->deleteCategories($id);

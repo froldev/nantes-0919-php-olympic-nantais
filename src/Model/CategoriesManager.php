@@ -25,11 +25,11 @@ class CategoriesManager extends AbstractManager
         $request->execute();
     }
 
-    public function updateCategories(array $category):bool
+    public function updateCategories(array $category): bool
     {
         $request = $this->pdo->prepare("UPDATE $this->table SET `category` = :category WHERE id=:id");
-        $request->bindValue('id', $category['id'], \PDO::PARAM_INT);
-        $request->bindValue('category', ucfirst(strtolower($category["category"])), \PDO::PARAM_STR);
+        $request->bindValue(':id', $category['id'], \PDO::PARAM_INT);
+        $request->bindValue(':category', ucfirst(strtolower($category["category"])), \PDO::PARAM_STR);
 
         return $request->execute();
     }
