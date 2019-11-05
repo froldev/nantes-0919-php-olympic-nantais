@@ -21,12 +21,12 @@ class ProgrammingManager extends AbstractManager
             WHERE title LIKE :title
             OR category LIKE :category;"
         );
+
         $searchs = '%' . $search . '%';
 
         $query->bindValue(':title', $searchs, \PDO::PARAM_STR);
         $query->bindValue(':category', $searchs, \PDO::PARAM_STR);
         $query->execute();
-        var_dump($query);
 
 
         return $query->fetchAll();
